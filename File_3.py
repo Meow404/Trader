@@ -25,6 +25,10 @@ SMALL_FONT=("Verdana",8)
 from tkinter import  ttk
 style.use("ggplot")
 
+exchange="BTC-e"
+DatCounter=9000
+programName="btce"
+
 f=Figure()
 a=f.add_subplot(111)
 
@@ -33,6 +37,13 @@ a=f.add_subplot(111)
 
 
 def changeExchange(toWhat,pn):
+    global exchange
+    global DatCounter
+    global programName
+
+    exchange=toWhat
+    programName=pn
+    DatCounter=9000
 
 
 def popupmsg(ms):
@@ -82,7 +93,7 @@ class SeaofBTCapp(tk.Tk):
         exchangeChoice.add_command(label="GBP/USD",command=lambda :changeExchange("BTCE_Display name2","tickersymbol"))
         exchangeChoice.add_command(label="CHF/USD",command=lambda :changeExchange("BTCE_Display name3","tickersymbol"))
         exchangeChoice.add_command(label="CHF/EUR",command=lambda :changeExchange("BTCE_Display name4","tickersymbol"))
-
+        menubar.add_cascade(label="Exchange",menu=exchangeChoice)
 
         tk.Tk.config(self,menu=menubar)
 
